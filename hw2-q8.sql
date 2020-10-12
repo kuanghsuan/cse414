@@ -5,5 +5,5 @@
 SELECT CARRIERS.name AS name, sum(departure_delay) as delay
 FROM FLIGHTS
     JOIN CARRIERS on FLIGHTS.carrier_id = CARRIERS.cid
-GROUP BY FLIGHTS.carrier_id
+GROUP BY CARRIERS.name
 ;

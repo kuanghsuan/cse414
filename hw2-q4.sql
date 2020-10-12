@@ -7,6 +7,6 @@
 SELECT DISTINCT CARRIERS.name AS name
 FROM FLIGHTS, CARRIERS
 WHERE FLIGHTS.carrier_id = CARRIERS.cid
-GROUP BY FLIGHTS.carrier_id, FLIGHTS.month_id, FLIGHTS.day_of_month
+GROUP BY CARRIERS.name, FLIGHTS.month_id, FLIGHTS.day_of_month
 HAVING COUNT(*) > 1000
  ;

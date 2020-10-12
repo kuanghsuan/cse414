@@ -2,7 +2,7 @@
 -- (indicating an early departure); they should reduce the total, so you don't need to handle them specially. 
 -- Name the output columns name and delay, in that order.
 
-SELECT CARRIERS.name, sum(departure_delay) as delay
+SELECT CARRIERS.name AS name, sum(departure_delay) as delay
 FROM FLIGHTS
     JOIN CARRIERS on FLIGHTS.carrier_id = CARRIERS.cid
 GROUP BY FLIGHTS.carrier_id

@@ -16,12 +16,12 @@
 --  and actual_time as the total flight time. List the output columns in this order. [Output relation cardinality: 1472 rows]
 
 
-SELECT C.name as carrier,
-    F1.flight_num as f1_flight_num, F1.origin_city as f1_origin_city, F1.dest_city as f1_dest_city, F1.actual_time as f1_actual_time,
-    F2.flight_num as f2_flight_num, F2.origin_city as f2_origin_city, F2.dest_city as f2_dest_city, F2.actual_time as f2_actual_time,
+SELECT
+    C.name AS name,
+    F1.flight_num AS f1_flight_num, F1.origin_city AS f1_origin_city, F1.dest_city AS f1_dest_city, F1.actual_time AS f1_actual_time,
+    F2.flight_num AS f2_flight_num, F2.origin_city AS f2_origin_city, F2.dest_city AS f2_dest_city, F2.actual_time AS f2_actual_time,
     F1.actual_time+F2.actual_time AS actual_time
-
-FROM FLIGHTS as F1, FLIGHTS as F2, CARRIERS as  C
+FROM FLIGHTS AS F1, FLIGHTS AS F2, CARRIERS AS  C, MONTHS AS M
 WHERE F1.carrier_id = F2.carrier_id
     AND F1.carrier_id = C.cid
     AND F1.origin_city = 'Seattle WA'
@@ -31,6 +31,7 @@ WHERE F1.carrier_id = F2.carrier_id
     AND F1.actual_time + F2.actual_time < 420
     AND F1.day_of_month = 15
     AND F2.day_of_month = 15
-    AND F1.month_id = 7
+    AND F1.month_id =m.mid 
+    AND M.month='July'
         ;
 

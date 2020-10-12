@@ -3,10 +3,10 @@
 -- Please use the flight_num column instead of fid. Name the output column flight_num.
 -- [Hint: Output relation cardinality: 3 rows]
 
-SELECT DISTINCT flight_num
-from FLIGHTS
+SELECT DISTINCT flight_num AS flight_num
+FROM FLIGHTS
     JOIN CARRIERS ON FLIGHTS.carrier_id=CARRIERS.cid
     JOIN WEEKDAYS ON FLIGHTS.day_of_week_id=WEEKDAYS.did
-where WEEKDAYS.day_of_week = 'Monday' and CARRIERS.name = 'Alaska Airlines Inc.' AND origin_city = 'Seattle WA' and dest_city = 'Boston MA';
+WHERE WEEKDAYS.day_of_week = 'Monday' AND CARRIERS.name = 'Alaska Airlines Inc.' AND origin_city = 'Seattle WA' AND dest_city = 'Boston MA';
 
 

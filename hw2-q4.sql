@@ -4,9 +4,9 @@
 -- return any duplicates (i.e., airlines
 -- with the exact same name). Name the output column name.
 
-SELECT DISTINCT CARRIERS.name
+SELECT DISTINCT CARRIERS.name AS name
 FROM FLIGHTS, CARRIERS
 WHERE FLIGHTS.carrier_id = CARRIERS.cid
 GROUP BY FLIGHTS.carrier_id, FLIGHTS.month_id, FLIGHTS.day_of_month
-HAVING COUNT(*) >= 1000
+HAVING COUNT(*) > 1000
  ;

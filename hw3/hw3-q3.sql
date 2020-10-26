@@ -1,38 +1,38 @@
-select f2.origin_city as origin_city, cast((select count(*) as number
-    from FLIGHTS as f1
-    where f1.actual_time < 180
-        and f1.origin_city = f2.origin_city
-    group by f1.origin_city) as float) * 100 /count(f2.origin_city) as percentage
-from FLIGHTS as f2
+SELECT f2.origin_city AS origin_city, CAST((SELECT count(*) AS number
+    FROM FLIGHTS AS f1
+    WHERE f1.actual_time < 180
+        AND f1.origin_city = f2.origin_city
+        AND f1.canceled = 0
+    GROUP BY f1.origin_city) AS float) * 100 /count(f2.origin_city) AS percentage
+FROM FLIGHTS AS f2
 
-group by f2.origin_city;
+GROUP BY f2.origin_city;
 
 /*
-result:
-1.the number of the query returns
+1.Number of the query returns
 327
 2.how long the query took
 15s
 3.first 20 rows of the results
-origin_city percentage
-Dothan AL	100
-Toledo OH	99.83471074380165
-Peoria IL	99.86648865153538
-Yuma AZ	100
-Bakersfield CA	82.97546012269939
-Ontario CA	88.44147715418319
-Daytona Beach FL	97.54601226993866
-Laramie WY	100
-Victoria TX	100
-North Bend/Coos Bay OR	100
-Erie PA	100
-Guam TT	
-Columbus GA	100
-Wichita Falls TX	100
-Juneau AK	99.72375690607734
-Hartford CT	87.05277722870133
-Hattiesburg/Laurel MS	100
-Myrtle Beach SC	99.25428784489188
-Arcata/Eureka CA	99.57264957264957
-Kotzebue AK	98.70967741935483
+origin_city         percentage
+Dothan AL 92.5373134328358
+Toledo OH 93.2231404958678
+Peoria IL 96.128170894526
+Yuma AZ 98.134328358209
+Bakersfield CA 81.1349693251534
+Ontario CA 87.3356978927603
+Daytona Beach FL 94.6830265848671
+Laramie WY 100
+Victoria TX 100
+North Bend/Coos Bay OR 97.5
+Erie PA 97.4025974025974
+Guam TT
+Columbus GA 90.0398406374502
+Wichita Falls TX 97.752808988764
+Juneau AK 99.171270718232
+Hartford CT 85.7679383277328
+Hattiesburg/Laurel MS 100
+Myrtle Beach SC 97.613721103654
+Arcata/Eureka CA 96.3675213675214
+Kotzebue AK 92.9032258064516
 */

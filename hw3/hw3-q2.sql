@@ -1,18 +1,17 @@
-select distinct f2.origin_city as city
-from FLIGHTS as f2, (
-        select f.origin_city
-    from FLIGHTS as f
-    group by f.origin_city
-    Having Max(actual_time) < 180)
-             as f1
-where f2.origin_city = f1.origin_city
+SELECT DISTINCT f2.origin_city AS city
+FROM FLIGHTS AS f2, (
+        SELECT f.origin_city
+    FROM FLIGHTS AS f
+    GROUP BY f.origin_city
+    HAVING Max(actual_time) < 180) 
+             AS f1
+WHERE f2.origin_city = f1.origin_city
 
-order by city asc;
+ORDER BY city ASC;
 
 
 /*
-result:
-1.the number of the query returns
+1.Number of the query returns
 109
 2.how long the query took
 14s

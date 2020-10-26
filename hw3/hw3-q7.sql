@@ -1,14 +1,13 @@
-select distinct c1.name as carrier
-from CARRIERS as c1, FLIGHTS as f1
-where c1.cid = f1.carrier_id AND
+SELECT DISTINCT c1.name AS carrier
+FROM CARRIERS AS c1, FLIGHTS AS f1
+WHERE c1.cid = f1.carrier_id AND
     f1.origin_city = 'Seattle WA' AND
     f1.dest_city = 'San Francisco CA'
 
-order by c1.name asc;
+ORDER BY c1.name ASC;
 
 /*
-result:
-1.the number of the query returns
+1.Number of the query returns
 4
 2.how long the query took
 3s

@@ -1,21 +1,20 @@
-with
+WITH
     subFlight
-    as
+    AS
     (
-        select distinct f1.carrier_id
-        from FLIGHTS as f1
-        where f1.origin_city = 'Seattle WA' AND
+        SELECT DISTINCT f1.carrier_id
+        FROM FLIGHTS AS f1
+        WHERE f1.origin_city = 'Seattle WA' AND
             f1.dest_city = 'San Francisco CA'
     )
-select c1.name as carrier
-from CARRIERS as c1, subFlight as sub
-where c1.cid = sub.carrier_id
-order by c1.name asc;
+SELECT c1.name AS carrier
+FROM CARRIERS AS c1, subFlight AS sub
+WHERE c1.cid = sub.carrier_id
+ORDER BY c1.name ASC;
 
 
 /*
-result:
-1.the number of the query returns
+1.Number of the query returns
 4
 2.how long the query took
 4
